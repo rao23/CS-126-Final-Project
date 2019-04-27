@@ -12,6 +12,7 @@
 
 #include "CSVReader.hpp"
 #include "Training.hpp"
+#include "Predictor.hpp"
 
 using namespace std;
 
@@ -74,14 +75,34 @@ int main()
     vector<string> x = TeamList(dataList);
     //vector<string> rand = {"pan", "bat", "kit", "tim", "fox", "ass"};
     
+    vector<vector<string>> model = ModelCreator(x, dataList);
+    
+    
+//    for (int i = 0; i < model.size(); i++) {
+//        for (int j = 0; j < model[i].size(); j++) {
+//            cout << model[i][j];
+//            cout << " ";
+//        }
+//        
+//        cout << endl;
+//    }
+    
 //    cout << get<0>(LeagueAverages(x, dataList)) << endl;
 //    cout << get<1>(LeagueAverages(x, dataList)) << endl;
 //    cout << get<2>(LeagueAverages(x, dataList)) << endl;
 //    cout << get<3>(LeagueAverages(x, dataList)) << endl;
+//
+//    cout << endl;
+//
+//    cout << get<0>(LeagueAverages(x, dataList)) << endl;
+//    cout << get<1>(LeagueAverages(x, dataList)) << endl;
+//    cout << get<2>(LeagueAverages(x, dataList)) << endl;
+//    cout << get<3>(LeagueAverages(x, dataList)) << endl;
+
     
     
-//    for (int i = 0; i < x.size(); i++) {
-//        cout << x[i] << endl;
+//    for (int i = 0; i < r.size(); i++) {
+//        cout << r[i] << endl;
 //    }
     //cout << x.size();
     
