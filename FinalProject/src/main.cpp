@@ -72,16 +72,18 @@ int main()
 //        }
     
     vector<string> x = TeamList(dataList);
+    //vector<string> rand = {"pan", "bat", "kit", "tim", "fox", "ass"};
     
-    cout << get<0>(LeagueAverages(x, dataList)) << endl;
-    cout << get<1>(LeagueAverages(x, dataList)) << endl;
-    cout << get<2>(LeagueAverages(x, dataList)) << endl;
-    cout << get<3>(LeagueAverages(x, dataList)) << endl;
+//    cout << get<0>(LeagueAverages(x, dataList)) << endl;
+//    cout << get<1>(LeagueAverages(x, dataList)) << endl;
+//    cout << get<2>(LeagueAverages(x, dataList)) << endl;
+//    cout << get<3>(LeagueAverages(x, dataList)) << endl;
+    
     
 //    for (int i = 0; i < x.size(); i++) {
 //        cout << x[i] << endl;
 //    }
-//    cout << x.size();
+    //cout << x.size();
     
     return 0;
 }
