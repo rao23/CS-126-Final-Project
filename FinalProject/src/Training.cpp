@@ -248,29 +248,29 @@ vector<vector<string>> ModelCreator(vector<string> team_names, vector<vector<str
     return result;
 }
 
-bool ContainsIn2D(vector<vector<string>> input, string to_search) {
-    
-    for (int i = 0; i < input.size(); i++) {
-        for (int j = 0; j < input[i].size(); j++) {
-            
-            if (input[i][j] == to_search) {
-                return true;
-            }
-        }
-    }
-    
-    return false;
-}
+//bool ContainsIn2D(vector<vector<string>> input, string to_search) {
+//
+//    for (int i = 0; i < input.size(); i++) {
+//        for (int j = 0; j < input[i].size(); j++) {
+//
+//            if (input[i][j] == to_search) {
+//                return true;
+//            }
+//        }
+//    }
+//
+//    return false;
+//}
+//
+bool ContainsIn1D(vector<string> input, string to_search) {
 
-pair<bool, int> ContainsIn1D(vector<string> input, string to_search) {
-    
     for (int i = 0; i < input.size(); i++) {
         if (input[i] == to_search) {
-            return make_pair(true, i);
+            return true;
         }
     }
-    
-    return make_pair(false, 0);
+
+    return false;
 }
 
 vector<string> TeamList(vector<vector<string>> data) {
@@ -279,7 +279,7 @@ vector<string> TeamList(vector<vector<string>> data) {
     
     for (int i = 1; i < data.size(); i++) {
         
-        if (!get<0>(ContainsIn1D(to_return, data[i][2]))) {
+        if (!(ContainsIn1D(to_return, data[i][2]))) {
             
             to_return.push_back(data[i][2]);
         }

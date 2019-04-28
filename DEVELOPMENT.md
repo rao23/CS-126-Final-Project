@@ -16,3 +16,7 @@
 12. I changed my idea of using multi-variable linear regression to calculate the probabilities as it was very tedious to go through with it and the predicitions do not turn out to be very accurate.
 13. I decided to use Poisson distribution to calculate the probabilities instead as it is more simple to use it and it also gives a more accurate prediction.
 
+14. Finally was able to complete the trainer methods and prediction methods.
+15. Now, I have started working on ofxDatGui to present my project in a better way.
+
+
