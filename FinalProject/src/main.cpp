@@ -16,7 +16,6 @@
 
 using namespace std;
 
-
 int main()
 {
     // Creating an object of CSVWriter
@@ -77,15 +76,22 @@ int main()
     
     vector<vector<string>> model = ModelCreator(x, dataList);
     
+//    cout << get<0>(FindTeamGoalExpectancy(model, "Arsenal", "Burnley", get<0>(LeagueAverages(x, dataList)), get<2>(LeagueAverages(x, dataList)))) << endl;
+//
+//    cout << get<1>(FindTeamGoalExpectancy(model, "Arsenal", "Burnley", get<0>(LeagueAverages(x, dataList)), get<2>(LeagueAverages(x, dataList)))) << endl;
     
-//    for (int i = 0; i < model.size(); i++) {
-//        for (int j = 0; j < model[i].size(); j++) {
-//            cout << model[i][j];
-//            cout << " ";
-//        }
-//        
-//        cout << endl;
-//    }
+    vector<vector<string>> result = ModelPrediction(model, "Man City", "West Ham", get<0>(LeagueAverages(x, dataList)), get<2>(LeagueAverages(x, dataList)));
+    
+    for (int i = 0; i < result.size(); i++) {
+        for (int j = 0; j < result[i].size(); j++) {
+            cout << result[i][j];
+            cout << " ";
+        }
+        
+        cout << endl;
+    }
+    
+    cout << endl;
     
 //    cout << get<0>(LeagueAverages(x, dataList)) << endl;
 //    cout << get<1>(LeagueAverages(x, dataList)) << endl;
@@ -105,6 +111,9 @@ int main()
 //        cout << r[i] << endl;
 //    }
     //cout << x.size();
+    
+//    poisson_distribution<> p(2.9);
+//    cout<<"cdf: ppois(1,2.9)="<<pdf(p,1)<<endl;
     
     return 0;
 }

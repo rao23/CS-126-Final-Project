@@ -52,16 +52,16 @@ tuple<double,double,double,double> LeagueAverages(vector<string> team_names, vec
             //            cout << count << endl;
             //            cout << endl;
         
-        cout << team_list[0] <<endl;
-        cout << "HGS: ";
-        cout << (float)home_goals_scored/19 << endl;
-        cout << "HGC: ";
-        cout << (float)home_goals_conceded/19 << endl;
-        cout << "AGS: ";
-        cout << (float)away_goals_scored/19 << endl;
-        cout << "AGC: ";
-        cout << (float)away_goals_conceded/19 << endl;
-        cout << endl;
+//        cout << team_list[0] <<endl;
+//        cout << "HGS: ";
+//        cout << (float)home_goals_scored/19 << endl;
+//        cout << "HGC: ";
+//        cout << (float)home_goals_conceded/19 << endl;
+//        cout << "AGS: ";
+//        cout << (float)away_goals_scored/19 << endl;
+//        cout << "AGC: ";
+//        cout << (float)away_goals_conceded/19 << endl;
+//        cout << endl;
         
         home_avg_goals_for += (double) home_goals_scored / (double) games_played;
         home_avg_goals_against += (double) home_goals_conceded / (double) games_played;
@@ -144,10 +144,10 @@ vector<vector<string>> ModelCreator(vector<string> team_names, vector<vector<str
     
     vector<string> tmp;
     
-    double avg_one = get<0>(LeagueAverages(team_names, data));
-    double avg_two = get<1>(LeagueAverages(team_names, data));
-    double avg_three = get<2>(LeagueAverages(team_names, data));
-    double avg_four = get<3>(LeagueAverages(team_names, data));
+    double league_avg_home_goals_for = get<0>(LeagueAverages(team_names, data));
+    double league_avg_home_goals_against = get<1>(LeagueAverages(team_names, data));
+    double league_avg_away_goals_for = get<2>(LeagueAverages(team_names, data));
+    double league_avg_away_goals_against = get<3>(LeagueAverages(team_names, data));
     
     while (team_list_one.size() != 0) {
         
@@ -190,22 +190,22 @@ vector<vector<string>> ModelCreator(vector<string> team_names, vector<vector<str
 
         //cout << get<0>(LeagueAverages(team_list_two, data)) <<endl;
         //cout << team_list_two.size() << endl;
-        double home_AS = home_avg_goals_for/avg_one;
+        double home_AS = home_avg_goals_for/league_avg_home_goals_for;
         home_avg_goals_for = 0.0;
         
         //cout << get<1>(LeagueAverages(team_list_two, data)) <<endl;
         //cout << team_list_two.size() << endl;
-        double home_DS = home_avg_goals_against/avg_two;
+        double home_DS = home_avg_goals_against/league_avg_home_goals_against;
         home_avg_goals_against = 0.0;
         
         //cout << get<2>(LeagueAverages(team_list_two, data)) <<endl;
         //cout << team_list_two.size() << endl;
-        double away_AS = away_avg_goals_for/avg_three;
+        double away_AS = away_avg_goals_for/league_avg_away_goals_for;
         away_avg_goals_for = 0.0;
         
         //cout << get<3>(LeagueAverages(team_list_two, data)) <<endl;
         //cout << team_list_two.size() << endl;
-        double away_DS = away_avg_goals_against/avg_four;
+        double away_DS = away_avg_goals_against/league_avg_away_goals_against;
         away_avg_goals_against = 0.0;
         
         //cout << endl;
@@ -228,14 +228,14 @@ vector<vector<string>> ModelCreator(vector<string> team_names, vector<vector<str
         tmp.push_back(to_string(away_AS));
         tmp.push_back(to_string(away_DS));
         
-        cout << endl;
-        
-        for (int i = 0; i < tmp.size(); i++) {
-            cout << tmp[i];
-            cout << " ";
-        }
-
-        cout << endl;
+//        cout << endl;
+//        
+//        for (int i = 0; i < tmp.size(); i++) {
+//            cout << tmp[i];
+//            cout << " ";
+//        }
+//
+//        cout << endl;
         
         result.push_back(tmp);
         
