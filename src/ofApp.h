@@ -42,6 +42,8 @@ class ofApp : public ofBaseApp{
     ofxDatGuiDropdown* third;
     ofxDatGuiDropdown* fourth;
     
+    ofTrueTypeFont font;
+    
     vector<string> home_team_list;
     vector<string> away_team_list;
     
@@ -59,6 +61,7 @@ class ofApp : public ofBaseApp{
     vector<vector<string>> away_model;
     
     vector<vector<string>> resultant_matrix;
-//    std::vector<std::vector<std::string>> dataList = england.getData();
-		
+    vector<string> stats;
+    
+    bool button_pressed = false;
 };

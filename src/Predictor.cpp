@@ -34,12 +34,6 @@ vector<vector<string>> ModelPrediction(vector<vector<string>> model_home, vector
         
     }
     
-    //poisson_distribution<> p();
-    
-    //math::poisson_distribution::pdf(1,2);
-    
-    //boost::poisson_distribution(RealType mean = 1);
-    
     return distribution;
 }
 
@@ -73,4 +67,50 @@ pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model_home, v
     away_goal_expectancy = away_attacking_strength * home_defensive_strength * league_avg_away_goals_for;
     
     return make_pair(home_goal_expectancy, away_goal_expectancy);
+}
+
+vector<string> StatisticsCreator(vector<vector<string>> resultant_matrix, string home_team_name, string away_team_name) {
+    
+    double win;
+    double loss;
+    double draw;
+    
+    stringstream home_win;
+    stringstream away_win;
+    stringstream even;
+    stringstream score;
+    vector<string> stats;
+    
+    double max = 0.0;
+    int home = 0;
+    int away = 0;
+    
+    for (int i = 0; i < resultant_matrix.size(); i++) {
+        for (int j = 0; j < resultant_matrix[i].size(); j++) {
+            if (max < stod(resultant_matrix[i][j])) {
+                max = stod(resultant_matrix[i][j]);
+                home = j;
+                away = i;
+            }
+            if (i > j) {
+                win += stod(resultant_matrix[i][j]);
+            } else if (i < j) {
+                loss += stod(resultant_matrix[i][j]);
+            } else if (i == j) {
+                draw += stod(resultant_matrix[i][j]);
+            }
+        }
+    }
+    
+    home_win << home_team_name <<" Win Probability = " << loss << " %" << endl;
+    away_win << away_team_name << " Win Probability = " << win << " %" << endl;
+    even << "Draw Probability = " << 100.0 - (loss + win) << " %" << endl;
+    score << "Expected Score: " << home_team_name << " " << home << " - " << away << " " << away_team_name << endl;
+    
+    stats.push_back(home_win.str());
+    stats.push_back(away_win.str());
+    stats.push_back(even.str());
+    stats.push_back(score.str());
+    
+    return stats;
 }

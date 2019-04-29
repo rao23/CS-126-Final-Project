@@ -22,4 +22,7 @@ vector<string> TeamList(vector<vector<string>> data);
 bool ContainsIn1D(vector<string> input, string to_search);
 tuple<double,double,double,double> LeagueAverages(vector<string> team_names, vector<vector<string>> data);
 
+const int kNumberOfTeams = 20;
+const int kGamesPlayed = 19;
+
 #endif /* Training_hpp */
