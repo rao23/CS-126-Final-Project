@@ -10,12 +10,12 @@
 #include <stdio.h>
 
 
-vector<vector<string>> ModelPrediction(vector<vector<string>> model, string home_team, string away_team, double league_avg_home_goals_for, double league_avg_away_goals_for) {
+vector<vector<string>> ModelPrediction(vector<vector<string>> model_home, vector<vector<string>> model_away, string home_team, string away_team, double league_avg_home_goals_for, double league_avg_away_goals_for) {
     
     vector<vector<string>> distribution;
     
-    double home_goal_expectancy = get<0>(FindTeamGoalExpectancy(model, home_team, away_team, league_avg_home_goals_for, league_avg_away_goals_for));
-    double away_goal_expectancy = get<1>(FindTeamGoalExpectancy(model, home_team, away_team, league_avg_home_goals_for, league_avg_away_goals_for));;
+    double home_goal_expectancy = get<0>(FindTeamGoalExpectancy(model_home, model_away, home_team, away_team, league_avg_home_goals_for, league_avg_away_goals_for));
+    double away_goal_expectancy = get<1>(FindTeamGoalExpectancy(model_home, model_away, home_team, away_team, league_avg_home_goals_for, league_avg_away_goals_for));;
     
     poisson_distribution<> p_home(home_goal_expectancy);
     poisson_distribution<> p_away(away_goal_expectancy);
@@ -43,7 +43,7 @@ vector<vector<string>> ModelPrediction(vector<vector<string>> model, string home
     return distribution;
 }
 
-pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model, string home_team_name, string away_team_name, double league_avg_home_goals_for, double league_avg_away_goals_for) {
+pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model_home, vector<vector<string>> model_away, string home_team_name, string away_team_name, double league_avg_home_goals_for, double league_avg_away_goals_for) {
     
     double home_goal_expectancy;
     double away_goal_expectancy;
@@ -53,16 +53,19 @@ pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model, string
     double home_defensive_strength = 0.0;
     double away_attacking_strength = 0.0;
     
-    for (int i = 0; i < model.size(); i++) {
+    for (int i = 0; i < model_home.size(); i++) {
         
-        if (home_team_name == model[i][0]) {
-            home_attacking_strength = stod(model[i][1]);
-            home_defensive_strength = stod(model[i][2]);
+        if (home_team_name == model_home[i][0]) {
+            home_attacking_strength = stod(model_home[i][1]);
+            home_defensive_strength = stod(model_home[i][2]);
         }
+    }
+    
+    for (int i = 0; i < model_away.size(); i++) {
         
-        if (away_team_name == model[i][0]) {
-            away_attacking_strength = stod(model[i][3]);
-            away_defensive_strength = stod(model[i][4]);
+        if (away_team_name == model_away[i][0]) {
+            away_attacking_strength = stod(model_away[i][3]);
+            away_defensive_strength = stod(model_away[i][4]);
         }
     }
     

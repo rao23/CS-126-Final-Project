@@ -248,20 +248,7 @@ vector<vector<string>> ModelCreator(vector<string> team_names, vector<vector<str
     return result;
 }
 
-//bool ContainsIn2D(vector<vector<string>> input, string to_search) {
-//
-//    for (int i = 0; i < input.size(); i++) {
-//        for (int j = 0; j < input[i].size(); j++) {
-//
-//            if (input[i][j] == to_search) {
-//                return true;
-//            }
-//        }
-//    }
-//
-//    return false;
-//}
-//
+
 bool ContainsIn1D(vector<string> input, string to_search) {
 
     for (int i = 0; i < input.size(); i++) {

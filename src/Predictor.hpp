@@ -21,9 +21,9 @@ using namespace std;
 using namespace boost::math;
 
 
-pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model, string home_team_name, string away_team_name, double league_avg_home_goals_for, double league_avg_away_goals_for);
+pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model_home, vector<vector<string>> model_away, string home_team_name, string away_team_name, double league_avg_home_goals_for, double league_avg_away_goals_for);
 
-vector<vector<string>> ModelPrediction(vector<vector<string>> model, string home_team, string away_team, double league_avg_home_goals_for, double league_avg_away_goals_for);
+vector<vector<string>> ModelPrediction(vector<vector<string>> model_home, vector<vector<string>> model_away, string home_team, string away_team, double league_avg_home_goals_for, double league_avg_away_goals_for);
 //class Predictor {
 //    
 //public:
