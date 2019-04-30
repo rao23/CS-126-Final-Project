@@ -34,14 +34,14 @@ class ofApp : public ofBaseApp{
     ofxDatGui* gui_two = new ofxDatGui(ofxDatGuiAnchor::TOP_RIGHT);
     ofxDatGui* gui_three = new ofxDatGui(ofxDatGuiAnchor::BOTTOM_RIGHT);
     
-    ofxDatGuiDropdown* second;
-    ofxDatGuiDropdown* menu;
+    ofxDatGuiDropdown* home_team_league_names_dropdown;
+    ofxDatGuiDropdown* home_team_names_dropdown;
     bool second_created = false;
     
     ofxDatGuiButton* button;
     
-    ofxDatGuiDropdown* third;
-    ofxDatGuiDropdown* fourth;
+    ofxDatGuiDropdown* away_team_league_names_dropdown;
+    ofxDatGuiDropdown* away_team_names_dropdown;
     bool fourth_created = false;
     
     ofTrueTypeFont font;

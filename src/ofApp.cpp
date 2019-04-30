@@ -10,25 +10,25 @@ void ofApp::setup(){
     font.load("bpg_glaho_arial_v5_big.ttf", 10);
     
     // instantiate the dropdown //
-    menu = gui->addDropdown("SELECT HOME TEAM LEAGUE", options);
+    home_team_league_names_dropdown = gui->addDropdown("SELECT HOME TEAM LEAGUE", options);
     gui->addBreak()->setHeight(10.0f);
     
-    third = gui_two->addDropdown("SELECT AWAY TEAM LEAGUE", options);
+    away_team_league_names_dropdown = gui_two->addDropdown("SELECT AWAY TEAM LEAGUE", options);
     gui_two->addBreak()->setHeight(10.0f);
     
     button = gui_three->addButton("CALCULATE");
     
     
     // register to listen for change events //
-    menu->onDropdownEvent(this, &ofApp::onDropdownEvent);
-    third->onDropdownEvent(this, &ofApp::onDropdownEvent);
+    home_team_league_names_dropdown->onDropdownEvent(this, &ofApp::onDropdownEvent);
+    away_team_league_names_dropdown->onDropdownEvent(this, &ofApp::onDropdownEvent);
     button->onButtonEvent(this, &ofApp::onButtonEvent);
     
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    menu->update();
+    home_team_league_names_dropdown->update();
     button->update();
 }
 
@@ -37,7 +37,7 @@ void ofApp::draw(){
     
     int height;
     int mid_height;
-    menu->draw();
+    home_team_league_names_dropdown->draw();
     button->draw();
     if (button_pressed) {
         
@@ -191,12 +191,12 @@ void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
     away_team_list = TeamList(dataListaway);
     
     if (first) {
-        second = gui->addDropdown("SELECT HOME TEAM", home_team_list);
-        second->onDropdownEvent(this, &ofApp::onDropdownEvent2);
+        home_team_names_dropdown = gui->addDropdown("SELECT HOME TEAM", home_team_list);
+        home_team_names_dropdown->onDropdownEvent(this, &ofApp::onDropdownEvent2);
         first = false;
     } else if (next) {
-        fourth = gui_two->addDropdown("SELECT AWAY TEAM", away_team_list);
-        fourth->onDropdownEvent(this, &ofApp::onDropdownEvent2);
+        away_team_names_dropdown = gui_two->addDropdown("SELECT AWAY TEAM", away_team_list);
+        away_team_names_dropdown->onDropdownEvent(this, &ofApp::onDropdownEvent2);
         next = false;
     }
     

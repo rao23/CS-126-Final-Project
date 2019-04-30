@@ -28,8 +28,6 @@ tuple<double,double,double,double> LeagueAverages(vector<string> team_names, vec
     while (team_list.size() != 0) {
         
         for (int j = 0; j < data.size(); j++) {
-            //cout << j;
-            //cout << team_names[0] << endl;
             if (team_list[0] == data[j][2]) {
                 home_goals_scored += stoi(data[j][4]);
                 home_goals_conceded += stoi(data[j][5]);

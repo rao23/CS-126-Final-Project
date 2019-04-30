@@ -20,11 +20,17 @@
 using namespace std;
 using namespace boost::math;
 
-
+// FindTeamGoalExpectancy calculates the HomeTeamGoalExpectancy and AwayTeamGoalExpectancy which are basically
+// the probabilities that the home team or away team are going to score.
 pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model_home, vector<vector<string>> model_away, string home_team_name, string away_team_name, double league_avg_home_goals_for, double league_avg_away_goals_for);
 
+// ModelPrediction takes the two models built for the home and away team respectively, their team names
+// and their respective league averages for goals scored at home or away depending on which are the home and away teams.
+// Using this data a prediction matrix is created by this function as a 2d vector of strings
+// which contains all the probabilities of each possible scoreline of upto 9 goals.
 vector<vector<string>> ModelPrediction(vector<vector<string>> model_home, vector<vector<string>> model_away, string home_team, string away_team, double league_avg_home_goals_for, double league_avg_away_goals_for);
 
+// This function takes in the calculated probabilties and the home and away team names and stores the draw, home win, away win probabilties and the expected scoreline in a vector of strings.
 vector<string> StatisticsCreator(vector<vector<string>> resultant_matrix, string home_team_name, string away_team_name);
 
 #endif /* Predictor_hpp */
