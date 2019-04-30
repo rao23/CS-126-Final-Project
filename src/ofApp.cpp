@@ -4,10 +4,8 @@
 void ofApp::setup(){
     
     ofSetWindowPosition(0, 0);
-    //ofSetBackgroundAuto(true);
+    
     ofBackground(0,0,128);
-    //0,0,128
-    // 25,25,112
     
     font.load("bpg_glaho_arial_v5_big.ttf", 10);
     
@@ -20,19 +18,11 @@ void ofApp::setup(){
     
     button = gui_three->addButton("CALCULATE");
     
-    // and position it in the middle of the screen //
-//    menu->setPosition(1,0);
-//    second->setPosition(ofGetWidth()/3, 0);
-//    myMatrix->setPosition(ofGetWidth()/2 - myMatrix->getWidth()/2, ofGetHeight()/2 - myMatrix->getHeight()/2);
-    
     
     // register to listen for change events //
     menu->onDropdownEvent(this, &ofApp::onDropdownEvent);
     third->onDropdownEvent(this, &ofApp::onDropdownEvent);
     button->onButtonEvent(this, &ofApp::onButtonEvent);
-    
-    // finally let's have it open by default //
-    //menu->expand();
     
 }
 
@@ -47,7 +37,6 @@ void ofApp::draw(){
     
     int height;
     int mid_height;
-    //ofClear(0,0,255);
     menu->draw();
     button->draw();
     if (button_pressed) {
@@ -72,16 +61,11 @@ void ofApp::draw(){
             font.drawString(stats[i], 150, height + 50 + 30*i);
         }
         
-        font.drawString(away_team_name, 40, mid_height);
-        font.drawString("Goals", 40, mid_height + 30);
+        font.drawString(away_team_name, 10, mid_height + 10);
+        font.drawString("Goal Probability", 10, mid_height + 30);
         
         font.drawString(home_team_name, 442.5, ofGetHeight()/4 - 60);
-        font.drawString(" Goals", 442.5 + font.stringWidth(home_team_name), ofGetHeight()/4 - 60);
-        
-//        font.drawString(home_win.str(), 150, height + 50);
-//        font.drawString(away_win.str(), 150, height + 80);
-//        font.drawString(even.str(), 150, height + 110);
-//        font.drawString(score.str(), 150, height + 140);
+        font.drawString(" Goal Probability", 442.5 + font.stringWidth(home_team_name), ofGetHeight()/4 - 60);
     }
 }
 
@@ -252,38 +236,6 @@ void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
         resultant_matrix = ModelPrediction(home_model, away_model, home_team_name, away_team_name, get<0>(LeagueAverages(home_team_list, dataListhome)), get<2>(LeagueAverages(away_team_list, dataListaway)));
         
         stats = StatisticsCreator(resultant_matrix, home_team_name, away_team_name);
-        
-//        double max = 0.0;
-//        int home = 0;
-//        int away = 0;
-//        
-//        for (int i = 0; i < resultant_matrix.size(); i++) {
-//            for (int j = 0; j < resultant_matrix[i].size(); j++) {
-//                if (max < stod(resultant_matrix[i][j])) {
-//                    max = stod(resultant_matrix[i][j]);
-//                    home = j;
-//                    away = i;
-//                }
-//                if (i > j) {
-//                    win += stod(resultant_matrix[i][j]);
-//                } else if (i < j) {
-//                    loss += stod(resultant_matrix[i][j]);
-//                } else {
-//                    draw += stod(resultant_matrix[i][j]);
-//                }
-//            }
-//        }
-//        
-//        home_win << home_team_name <<" Win Probability = " << loss << " %" << endl;
-//        away_win << away_team_name << " Win Probability = " << win << " %" << endl;
-//        even << "Draw Probability = " << draw << " %" << endl;
-//        score << "Expected Score: " << home_team_name << " " << home << " - " << away << " " << away_team_name << endl;
-//        
-//        stats.clear();
-//        stats.push_back(home_win.str());
-//        stats.push_back(away_win.str());
-//        stats.push_back(even.str());
-//        stats.push_back(score.str());
         
     }
 }

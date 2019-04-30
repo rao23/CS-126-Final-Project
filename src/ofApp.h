@@ -36,11 +36,13 @@ class ofApp : public ofBaseApp{
     
     ofxDatGuiDropdown* second;
     ofxDatGuiDropdown* menu;
+    bool second_created = false;
     
     ofxDatGuiButton* button;
     
     ofxDatGuiDropdown* third;
     ofxDatGuiDropdown* fourth;
+    bool fourth_created = false;
     
     ofTrueTypeFont font;
     
