@@ -5,17 +5,20 @@ void ofApp::setup(){
     
     ofSetWindowPosition(0, 0);
     
+    // set background colour to navy blue.
     ofBackground(0,0,128);
     
+    // load font of size 10 and type Arial.
     font.load("bpg_glaho_arial_v5_big.ttf", 10);
     
-    // instantiate the dropdown //
-    home_team_league_names_dropdown = gui->addDropdown("SELECT HOME TEAM LEAGUE", options);
+    // instantiate the dropdowns and add breaks between them //
+    home_team_league_names_dropdown = gui->addDropdown("SELECT HOME TEAM LEAGUE", league_options);
     gui->addBreak()->setHeight(10.0f);
     
-    away_team_league_names_dropdown = gui_two->addDropdown("SELECT AWAY TEAM LEAGUE", options);
+    away_team_league_names_dropdown = gui_two->addDropdown("SELECT AWAY TEAM LEAGUE", league_options);
     gui_two->addBreak()->setHeight(10.0f);
     
+    // instantiate the button //
     button = gui_three->addButton("CALCULATE");
     
     
@@ -39,6 +42,9 @@ void ofApp::draw(){
     int mid_height;
     home_team_league_names_dropdown->draw();
     button->draw();
+    
+    // If the button is pressed, calculate the confusion matrix of scoreline probabilities and the stats,
+    // and print it out on the console.
     if (button_pressed) {
         
         for (int i = 0; i < resultant_matrix.size(); i++) {
@@ -124,6 +130,7 @@ void ofApp::dragEvent(ofDragInfo dragInfo){
 
 }
 
+// Based on what league is chosen, a dropdown is added with the all the team names from that league.
 void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
     
     bool first = false;
@@ -202,6 +209,7 @@ void ofApp::onDropdownEvent(ofxDatGuiDropdownEvent e) {
     
 }
 
+// When the team name is selected from the second dropdown, register the chosen names to call into the functions.
 void ofApp::onDropdownEvent2(ofxDatGuiDropdownEvent e) {
     
     if (e.target->is("SELECT HOME TEAM")){
@@ -224,6 +232,9 @@ void ofApp::onDropdownEvent2(ofxDatGuiDropdownEvent e) {
     }
 }
 
+
+// When the button is pressed, call all the functions with the selected data.
+// Basically, on the press of the button, the code is compiled.
 void ofApp::onButtonEvent(ofxDatGuiButtonEvent e) {
     
     button_pressed = true;
