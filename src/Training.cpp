@@ -36,12 +36,12 @@ tuple<double,double,double,double> LeagueAverages(vector<string> team_names, vec
         // add that teams data on that line to the home goal stats,
         // else add it to the away goal stats if team we are looking for is found in the fourth column.
         for (int j = 0; j < data.size(); j++) {
-            if (team_list[0] == data[j][2]) {
-                home_goals_scored += stoi(data[j][4]);
-                home_goals_conceded += stoi(data[j][5]);
-            } else if (team_list[0] == data[j][3]) {
-                away_goals_scored += stoi(data[j][5]);
-                away_goals_conceded += stoi(data[j][4]);
+            if (team_list[kFirstElementIndex] == data[j][kHomeTeamNameRow]) {
+                home_goals_scored += stoi(data[j][kHomeGSRow]);
+                home_goals_conceded += stoi(data[j][kHomeGCRow]);
+            } else if (team_list[kFirstElementIndex] == data[j][kAwayTeamNameRow]) {
+                away_goals_scored += stoi(data[j][kAwayGSRow]);
+                away_goals_conceded += stoi(data[j][kAwayGSRow]);
             }
         }
         
@@ -104,12 +104,12 @@ vector<vector<string>> ModelCreator(vector<string> team_names, vector<vector<str
         // else add it to the away goal stats if team we are looking for is found in the fourth column.
         
         for (int j = 0; j < data.size(); j++) {
-            if (team_list_one[0] == data[j][2]) {
-                home_goals_scored += stoi(data[j][4]);
-                home_goals_conceded += stoi(data[j][5]);
-            } else if (team_list_one[0] == data[j][3]) {
-                away_goals_scored += stoi(data[j][5]);
-                away_goals_conceded += stoi(data[j][4]);
+            if (team_list_one[kFirstElementIndex] == data[j][kHomeTeamNameRow]) {
+                home_goals_scored += stoi(data[j][kHomeGSRow]);
+                home_goals_conceded += stoi(data[j][kHomeGCRow]);
+            } else if (team_list_one[kFirstElementIndex] == data[j][kAwayTeamNameRow]) {
+                away_goals_scored += stoi(data[j][kAwayGSRow]);
+                away_goals_conceded += stoi(data[j][kAwayGCRow]);
             }
         }
         
@@ -140,7 +140,7 @@ vector<vector<string>> ModelCreator(vector<string> team_names, vector<vector<str
         away_avg_goals_against = 0.0;
     
         // The team name and attacking and defensive strength at home and away is added to the temporary vector.
-        tmp.push_back(team_list_one[0]);
+        tmp.push_back(team_list_one[kFirstElementIndex]);
         tmp.push_back(to_string(home_AS));
         tmp.push_back(to_string(home_DS));
         tmp.push_back(to_string(away_AS));
@@ -179,9 +179,9 @@ vector<string> TeamList(vector<vector<string>> data) {
     for (int i = 1; i < data.size(); i++) {
         
         // if the team is not already added to the vector to return add it else skip it.
-        if (!(ContainsIn1D(to_return, data[i][2]))) {
+        if (!(ContainsIn1D(to_return, data[i][kHomeTeamNameRow]))) {
             
-            to_return.push_back(data[i][2]);
+            to_return.push_back(data[i][kHomeTeamNameRow]);
         }
     }
     

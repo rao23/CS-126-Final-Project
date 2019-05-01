@@ -25,8 +25,8 @@ vector<vector<string>> ModelPrediction(vector<vector<string>> model_home, vector
     // temporary string vector
     vector<string> tmp;
     
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
+    for (int i = 0; i < kMatrixRow; i++) {
+        for (int j = 0; j < kMatirxColumn; j++) {
             
             // probability of the home team scoring j goals x probability of the away team scoring i goals x 100
             // this data is added to the tmp string
@@ -59,9 +59,9 @@ pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model_home, v
     for (int i = 0; i < model_home.size(); i++) {
         
         // if the home team is found add the data from the model to the home team's stats
-        if (home_team_name == model_home[i][0]) {
-            home_attacking_strength = stod(model_home[i][1]);
-            home_defensive_strength = stod(model_home[i][2]);
+        if (home_team_name == model_home[i][kTeamNameRow]) {
+            home_attacking_strength = stod(model_home[i][kHomeASRow]);
+            home_defensive_strength = stod(model_home[i][kHomeDSRow]);
         }
     }
     
@@ -70,9 +70,9 @@ pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model_home, v
     for (int i = 0; i < model_away.size(); i++) {
         
         // if the away team is found add the data from the model to the away team's stats
-        if (away_team_name == model_away[i][0]) {
-            away_attacking_strength = stod(model_away[i][3]);
-            away_defensive_strength = stod(model_away[i][4]);
+        if (away_team_name == model_away[i][kTeamNameRow]) {
+            away_attacking_strength = stod(model_away[i][kAwayASRow]);
+            away_defensive_strength = stod(model_away[i][kAwayDSRow]);
         }
     }
     

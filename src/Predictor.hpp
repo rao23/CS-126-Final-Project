@@ -20,6 +20,17 @@
 using namespace std;
 using namespace boost::math;
 
+// Confusion matrix dimension:
+const int kMatrixRow = 10;
+const int kMatirxColumn = 10;
+
+// Model Specific Rows:
+const int kTeamNameRow = 0;
+const int kHomeASRow = 1;
+const int kHomeDSRow = 2;
+const int kAwayASRow = 3;
+const int kAwayDSRow = 4;
+
 // FindTeamGoalExpectancy calculates the HomeTeamGoalExpectancy and AwayTeamGoalExpectancy which are basically
 // the probabilities that the home team or away team are going to score.
 pair<double, double> FindTeamGoalExpectancy(vector<vector<string>> model_home, vector<vector<string>> model_away, string home_team_name, string away_team_name, double league_avg_home_goals_for, double league_avg_away_goals_for);

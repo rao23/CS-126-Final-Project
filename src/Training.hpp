@@ -41,4 +41,15 @@ const int kNumberOfTeams = 20;
 // Constant - number of matches played at home or away in a league
 const int kGamesPlayed = 19;
 
+// DataSet Specific Rows:
+const int kHomeTeamNameRow = 2;
+const int kAwayTeamNameRow = 3;
+const int kHomeGSRow = 4;
+const int kHomeGCRow = 5;
+const int kAwayGSRow = 5;
+const int kAwayGCRow = 4;
+
+// Team List Magic Number:
+const int kFirstElementIndex = 0;
+
 #endif /* Training_hpp */
