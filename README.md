@@ -6,5 +6,5 @@
 
 
 ## ***ADDONS USED:***
-1. I use ofxDatGui to create the dropdown menus and buttons in the window display.
-2. I also use ofTrueTypeFont to print the result on the window display.
+1. I used ofxDatGui to create the dropdown menus and buttons in the window display.
+2. I also used ofTrueTypeFont to print the result on the window display.
